@@ -14,6 +14,8 @@ import Loader from "./components/Loader/Loader";
 function App() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.contacts.loading);
+  const error = useSelector((state) => state.contacts.error);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -25,10 +27,8 @@ function App() {
           <h1>Phonebook</h1>
           <ContactForm />
           {loading && <Loader />}
-          {/* {error && <Heading title="Its wrong" />} */}
-          <SearchBox
-          // filter={filter} onFilter={setFilter}
-          />
+          {error && <Heading title="Its wrong" />}
+          <SearchBox />
           <ContactList />
         </Container>
       </Section>
